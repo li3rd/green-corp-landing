@@ -108,7 +108,7 @@ header {
     font-weight: 600;
     margin-bottom: 15px;
   }
-  .form input {
+  .form input, select {
     font-size: 18px;
     color: #213053;
     height: 60px;
@@ -116,14 +116,14 @@ header {
     border-radius: 15px;
     border: none;
   }
-  .form select {
+  /* .form select {
     font-size: 18px;
     color: #213053;
     height: 60px;
     padding: 0 20px 0 20px;
     border-radius: 15px;
     border: none;
-  }
+  } */
   .form__submit {
     font-size: 18px;
     font-weight: 600;
