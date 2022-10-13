@@ -310,6 +310,10 @@ header {
   margin-right: 10px;
   border: none;
 }
+.button_container {
+  display: flex;
+  justify-content: center;
+}
 .promo__right-card button {
   font-size: 18px;
   padding: 15px 30px;
