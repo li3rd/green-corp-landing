@@ -8,10 +8,17 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    position: sticky;
+    position: fixed;
+    left: 0;
+    right: 0;
     top: 0;
-    background-color: #fff;
+    background-color: transparent;
     z-index: 1;
+    transition: background-color .3s ease, box-shadow .3s ease;
+  }
+  .header__scrolled {
+    background-color: white;
+    box-shadow: 0 12px 34px -11px rgb(65 62 101 / 10%);
   }
   .header__logo {
     height: 30px;
@@ -328,6 +335,93 @@ header {
   margin-top: 20px;
   font-weight: 500;
 }
+
+.modal.open .modal_overlay,
+.modal.open .modal_window {
+  opacity: 1;
+  z-index: 99;
+}
+.modal.fading .modal_overlay,
+.modal.fading .modal_window {
+  opacity: 1;
+  z-index: 99;
+}
+.modal.open .modal_window {
+  transform: translateY(30vh);
+}
+.modal.open .modal_overlay {
+  background-color: rgba(0, 0, 0, .5);
+}
+.modal.fading .modal_window {
+  transform: translateY(-200px);
+}
+.modal.fading .modal_overlay {
+  background-color: rgba(0, 0, 0, 0);
+}
+.modal_overlay, .modal_window {
+  opacity: 0;
+  z-index: -1;
+}
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .4s ease-out;
+}
+.modal_window {
+  max-width: 600px;
+  border-radius: 10px;
+  background-color: #1D263A;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 10px;
+  color: white;
+  transform: translateY(-200px);
+  transition: transform .4s ease-out;
+}
+.modal_window form {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: baseline;
+}
+.modal_window form input {
+  font-size: 18px;
+  color: #213053;
+  height: 50px;
+  padding: 0 20px 0 20px;
+  border-radius: 15px;
+  border: none;
+  appearance: none;
+  outline: none;
+  margin: 20px 10px 10px 10px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.modal_window form label {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+.modal_window form button {
+  font-size: 18px;
+  height: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.modal_close {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  font-size: 25px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 @media (max-width: 1024px) {
   header {
     padding: 20px;
@@ -358,6 +452,16 @@ header {
   }
 }
 @media (max-width: 720px) {
+  .modal_window {
+    padding: 5px;
+  }
+  .modal_window form {
+    grid-template-columns: none;
+    padding: 15px 0;
+  }
+  .modal_overlay {
+    padding: 10px;
+  }
   header {
     padding: 10px;
   }
@@ -366,7 +470,7 @@ header {
   }
   .about {
     flex-direction: column-reverse;
-    padding: 50px 10px;
+    padding: 70px 10px;
   }
   .about h1 {
     font-size: 36px;
